@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vConsole/3.3.4/vconsole.min.js"></script>
+    <script>
+      // init vConsole
+      var vConsole = new VConsole();
+      console.log("Hello world");
+    </script>
+
+    <!-- 企业微信JS-SDK  https://work.weixin.qq.com/api/doc/10029 -->
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script>
+      wx.ready((x) => {
+        console.log("wx ready", JSON.stringify(x));
+        const hideRes = wx.hideOptionMenu((x) => {
+          console.log("hideOptionMenu x");
+        });
+        console.log("hideRes", hideRes);
+      });
+      wx.error((x) => {
+        console.log("wx.error", JSON.stringify(x));
+      });
+      const gNeededWXJSApiList = [
+        "getLocation",
+        "openLocation",
+        "getLocalImgData",
+        "chooseImage",
+        "uploadImage",
+        "downloadImage",
+        "checkJsApi", //checkJsApi似乎是always available的
+        "previewImage",
+      ];
+      function fConfig() {
+        console.log("fConfig");
+        const appId = "wwd761a93dd843eb4e";
+        const timestamp = "1586485375";
+        const signature = "d16350a88bbb8974c271f248290b805b14c806e8";
+        const url = "http://summer-wu.github.io//index.html";
+        const nonceStr = "Wm3WZYTPz0wzccnW";
+
+        const configData = {
+          beta: true,
+          signature,
+          appId,
+          nonceStr,
+          timestamp,
+          jsApiList: gNeededWXJSApiList,
+        };
+        wx.config(configData);
+      }
+    </script>
+  </head>
+  <body>
+    <p>用于测试jweixin的特定功能</p>
+    <button onclick="fConfig()">config</button>
+  </body>
+</html>
