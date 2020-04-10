@@ -19,18 +19,23 @@
     <script>
       wx.ready((x) => {
         console.log("wx ready", JSON.stringify(x));
-        const hideRes = wx.hideOptionMenu((x) => {
-          console.log("hideOptionMenu x");
+        const hideRes = wx.hideOptionMenu({
+          success: (x) => console.log("hideOptionMenu success", JSON.stringify(x)),
+          fail: (x) => console.log("hideOptionMenu fail", JSON.stringify(x)),
+          complete: (x) => console.log("hideOptionMenu complete", JSON.stringify(x)),
+          cancel: (x) => console.log("hideOptionMenu cancel", JSON.stringify(x)),
+          trigger: (x) => console.log("hideOptionMenu trigger", JSON.stringify(x)),
+        });
         });
         console.log("hideRes", hideRes);
 
         const getLocationRes = wx.getLocation({
           type: "wgs84", // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
-          success: (x) => console.log("success", JSON.stringify(x)),
-          fail: (x) => console.log("fail", JSON.stringify(x)),
-          complete: (x) => console.log("complete", JSON.stringify(x)),
-          cancel: (x) => console.log("cancel", JSON.stringify(x)),
-          trigger: (x) => console.log("trigger", JSON.stringify(x)),
+          success: (x) => console.log("getLocation success", JSON.stringify(x)),
+          fail: (x) => console.log("getLocation fail", JSON.stringify(x)),
+          complete: (x) => console.log("getLocation complete", JSON.stringify(x)),
+          cancel: (x) => console.log("getLocation cancel", JSON.stringify(x)),
+          trigger: (x) => console.log("getLocation trigger", JSON.stringify(x)),
         });
         console.log("getLocationRes", getLocationRes);
       });
