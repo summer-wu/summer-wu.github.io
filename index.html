@@ -23,6 +23,16 @@
           console.log("hideOptionMenu x");
         });
         console.log("hideRes", hideRes);
+
+        const getLocationRes = wx.getLocation({
+          type: "wgs84", // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+          success: (x) => console.log("success", JSON.stringify(x)),
+          fail: (x) => console.log("fail", JSON.stringify(x)),
+          complete: (x) => console.log("complete", JSON.stringify(x)),
+          cancel: (x) => console.log("cancel", JSON.stringify(x)),
+          trigger: (x) => console.log("trigger", JSON.stringify(x)),
+        });
+        console.log("getLocationRes", getLocationRes);
       });
       wx.error((x) => {
         console.log("wx.error", JSON.stringify(x));
@@ -39,10 +49,10 @@
       ];
       function fConfig() {
         console.log("fConfig");
-        const timestamp='1586486064'
-        const signature='817edac60a6f32158073fc2cbc29a8c676ae7a9e'
-        const url='http://summer-wu.github.io/index.html'
-        const nonceStr='Wm3WZYTPz0wzccnW'
+        const timestamp = "1586486064";
+        const signature = "817edac60a6f32158073fc2cbc29a8c676ae7a9e";
+        const url = "http://summer-wu.github.io/index.html";
+        const nonceStr = "Wm3WZYTPz0wzccnW";
 
         const appId = "wwd761a93dd843eb4e";
 
